@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('documentos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->string('descricao');
             $table->float('horas_in');
-            $table->string('status');
-            $table->string('comentario');
-            $table->float('horas_out');
+            $table->string('status')->default(0);     // (0)SOLICITADO / (1)DEFERIDO / (-1)INDEFERIDO
+            $table->string('comentario')->nullable();
+            $table->float('horas_out')->default(0);
 
             $table->softDeletes();
             $table->timestamps();

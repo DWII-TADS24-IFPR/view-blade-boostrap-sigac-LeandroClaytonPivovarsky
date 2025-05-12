@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Repositories\RepositoryAluno;
+use App\Repositories\RepositoryAluno;
 use App\Models\Aluno;
 use Illuminate\Http\Request;
 
@@ -20,7 +20,7 @@ class AlunoController extends Controller
     public function index()
     {
         $aluno = $this->repository->selectAllWith(['user', 'curso', 'turma'], $this->repository->getRows());
-        return view('aluno.index');
+        return view('aluno.index', compact($aluno));
     }
 
     /**
